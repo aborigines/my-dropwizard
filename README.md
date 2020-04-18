@@ -3,7 +3,8 @@
 TODO
 ---
 - add config support multiple load resource via classname
-- add HelloResource
+- add HelloResource with test
+- add Junit5
 
 
 How to start the dropwizard application

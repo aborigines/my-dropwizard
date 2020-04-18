@@ -13,7 +13,7 @@ public class HelloResource {
 
   @GET
   @Timed
-  public Hello to(@QueryParam("name") Optional<String> name) {
+  public Hello name(@QueryParam("name") Optional<String> name) {
     final String value = name.orElse(null);
     return new Hello(value);
   }
