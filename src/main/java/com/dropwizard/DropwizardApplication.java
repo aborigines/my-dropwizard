@@ -1,5 +1,6 @@
 package com.dropwizard;
 
+import com.dropwizard.resources.HelloResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -29,15 +30,6 @@ public class DropwizardApplication extends Application<DropwizardConfiguration> 
     }
 
     public void registerResource(final DropwizardConfiguration configuration, final Environment environment) {
-      List<String> resourceList = configuration.getResourceList();
-      try {
-        for (String resource : resourceList) {
-          String className = String.format("%s.resources.%s",this.getClass().getPackage().getName(), resource);
-          environment.jersey().register(Class.forName(className));
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-        System.exit(0);
-      }
+      environment.jersey().register(new HelloResource());
     }
 }

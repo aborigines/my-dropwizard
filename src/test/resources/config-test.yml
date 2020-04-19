@@ -1,6 +1,2 @@
 logging:
   level: INFO
-  loggers:
-    com.dropwizard: INFO
-resourceList:
-  - HelloResource
