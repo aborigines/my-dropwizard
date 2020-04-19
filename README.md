@@ -7,6 +7,8 @@ changelog
 - add database postgres
 - add migration
 - create table people
+- add hibernate
+- add People Domain, DAO, Resource and Service
 
 How to start the dropwizard application
 ---
@@ -17,3 +19,9 @@ How to start the dropwizard application
 
 How to run migration
 1. `java -jar target/dropwizard-1.0-SNAPSHOT.jar db migrate config.yml`
+
+Reference
+---
+
+- https://www.dropwizard.io/en/latest/index.html
+- https://github.com/dropwizard/dropwizard

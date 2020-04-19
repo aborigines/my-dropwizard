@@ -11,10 +11,10 @@
       <column name="id" type="bigint" autoIncrement="true">
         <constraints primaryKey="true" nullable="false"/>
       </column>
-      <column name="firstName" type="varchar(255)">
+      <column name="firstname" type="varchar(255)">
         <constraints nullable="false"/>
       </column>
-      <column name="lastName" type="varchar(255)">
+      <column name="lastname" type="varchar(255)">
       <constraints nullable="false"/>
       </column>
     </createTable>
