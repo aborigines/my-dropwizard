@@ -2,7 +2,6 @@ package com.dropwizard.resources;
 
 import com.dropwizard.api.Hello;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
-import io.dropwizard.testing.junit5.ResourceExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +23,7 @@ class HelloResourceTest {
   }
 
   @Test
-  public void nameReturnsName() {
+  public void shouldReturnName() {
     Hello result = resource.name(Optional.of("test"));
     assertThat(result.getContent()).contains("test");
   }

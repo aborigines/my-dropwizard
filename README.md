@@ -3,7 +3,7 @@
 TODO
 ---
 - add config support multiple load resource via classname
-- add HelloResource with test
+- add HelloResource with test and integrationTest
 - add Junit5
 
 

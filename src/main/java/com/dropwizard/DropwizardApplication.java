@@ -6,10 +6,10 @@ import io.dropwizard.setup.Environment;
 
 import java.util.List;
 
-public class dropwizardApplication extends Application<dropwizardConfiguration> {
+public class DropwizardApplication extends Application<DropwizardConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        new dropwizardApplication().run(args);
+        new DropwizardApplication().run(args);
     }
 
     @Override
@@ -18,17 +18,17 @@ public class dropwizardApplication extends Application<dropwizardConfiguration> 
     }
 
     @Override
-    public void initialize(final Bootstrap<dropwizardConfiguration> bootstrap) {
+    public void initialize(final Bootstrap<DropwizardConfiguration> bootstrap) {
         // TODO: application initialization
     }
 
     @Override
-    public void run(final dropwizardConfiguration configuration,
+    public void run(final DropwizardConfiguration configuration,
                     final Environment environment) {
       registerResource(configuration, environment);
     }
 
-    public void registerResource(final dropwizardConfiguration configuration, final Environment environment) {
+    public void registerResource(final DropwizardConfiguration configuration, final Environment environment) {
       List<String> resourceList = configuration.getResourceList();
       try {
         for (String resource : resourceList) {
