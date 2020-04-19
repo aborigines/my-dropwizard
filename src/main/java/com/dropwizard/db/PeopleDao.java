@@ -17,12 +17,16 @@ public class PeopleDao extends AbstractDAO<People> {
     return Optional.ofNullable(get(id));
   }
 
-  public People create(People People) {
-    return persist(People);
+  public People create(People people) {
+    return persist(people);
+  }
+
+  public void delete(People people) {
+    currentSession().delete(people);
   }
 
   @SuppressWarnings("unchecked")
   public List<People> findAll() {
-    return list((Query<People>) namedQuery("com.dropwizard.core.People.findAll"));
+    return list((Query<People>) namedQuery("People.findAll"));
   }
 }

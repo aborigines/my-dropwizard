@@ -3,12 +3,13 @@ package com.dropwizard.core;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "people")
 @NamedQueries({
   @NamedQuery(
-    name = "com.dropwizard.core.People.findAll",
+    name = "People.findAll",
     query = "SELECT p FROM People p"
   )
 })
@@ -16,11 +17,13 @@ public class People {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer Id;
+  private Long id;
 
+  @NotBlank
   @Column(name = "firstname", nullable = false)
   private String firstName;
 
+  @NotBlank
   @Column(name = "lastname", nullable = false)
   private String lastName;
 
@@ -32,12 +35,12 @@ public class People {
     this.lastName = lastName;
   }
 
-  public Integer getId() {
-    return Id;
+  public Long getId() {
+    return id;
   }
 
-  public void setId(Integer id) {
-    Id = id;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getFirstName() {
@@ -61,20 +64,20 @@ public class People {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     People people = (People) o;
-    return Id.equals(people.Id) &&
+    return id.equals(people.id) &&
       Objects.equal(firstName, people.firstName) &&
       Objects.equal(lastName, people.lastName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(Id, firstName, lastName);
+    return Objects.hashCode(id, firstName, lastName);
   }
 
   @Override
   public String toString() {
     return "People{" +
-      "Id=" + Id +
+      "id=" + id +
       ", firstName='" + firstName + '\'' +
       ", lastName='" + lastName + '\'' +
       '}';
