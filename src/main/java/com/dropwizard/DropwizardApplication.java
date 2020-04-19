@@ -33,7 +33,15 @@ public class DropwizardApplication extends Application<DropwizardConfiguration> 
     @Override
     public void run(final DropwizardConfiguration configuration,
                     final Environment environment) {
-      registerResource(configuration, environment);
+      // DAO
+      final PeopleDao peopleDao = new PeopleDao(hibernate.getSessionFactory());
+
+      // Service
+      final PeopleService peopleService = new PeopleService(peopleDao);
+
+      // Resource
+      environment.jersey().register(new HelloResource());
+      environment.jersey().register(new PeopleResource(peopleService));
     }
 
     private final MigrationsBundle<DropwizardConfiguration> migrations = new MigrationsBundle<DropwizardConfiguration>() {
@@ -49,16 +57,4 @@ public class DropwizardApplication extends Application<DropwizardConfiguration> 
         return configuration.getDataSourceFactory();
       }
     };
-
-    public void registerResource(final DropwizardConfiguration configuration, final Environment environment) {
-      // DAO
-      final PeopleDao peopleDao = new PeopleDao(hibernate.getSessionFactory());
-
-      // Service
-      final PeopleService peopleService = new PeopleService(peopleDao);
-
-      // Resource
-      environment.jersey().register(new HelloResource());
-      environment.jersey().register(new PeopleResource(peopleService));
-    }
 }
