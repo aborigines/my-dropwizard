@@ -2,10 +2,10 @@ package com.dropwizard;
 
 import com.dropwizard.resources.HelloResource;
 import io.dropwizard.Application;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-
-import java.util.List;
 
 public class DropwizardApplication extends Application<DropwizardConfiguration> {
 
@@ -20,7 +20,12 @@ public class DropwizardApplication extends Application<DropwizardConfiguration> 
 
     @Override
     public void initialize(final Bootstrap<DropwizardConfiguration> bootstrap) {
-        // TODO: application initialization
+      bootstrap.addBundle(new MigrationsBundle<DropwizardConfiguration>() {
+        @Override
+        public DataSourceFactory getDataSourceFactory(DropwizardConfiguration configuration) {
+          return configuration.getDataSourceFactory();
+        }
+      });
     }
 
     @Override
