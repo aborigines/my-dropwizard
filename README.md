@@ -10,6 +10,10 @@ changelog
 - add hibernate
 - add People Domain, DAO, Resource and Service
 
+TODO
+---
+- Handle Unexpected case (500)
+
 How to start the dropwizard application
 ---
 
