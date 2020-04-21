@@ -3,12 +3,14 @@ package com.dropwizard.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.dropwizard.api.HttpResponse;
 import com.dropwizard.core.People;
+import com.dropwizard.errors.NoContentExceptionMapper;
 import com.dropwizard.service.PeopleService;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NoContentException;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
@@ -54,33 +56,19 @@ public class PeopleResource {
     People updated = this.peopleService.updateById(id, people);
     if (updated.getId() != null) {
       return Response.ok().entity(people).build();
-    } else {
-      return Response.status(Response.Status.NOT_FOUND)
-        .entity(new HttpResponse(
-          Response.Status.NOT_FOUND.getStatusCode(),
-          Response.Status.NOT_FOUND.getReasonPhrase(),
-          "Entity not found"
-        ))
-        .build();
     }
+    return null;
   }
 
   @DELETE
   @Timed
   @UnitOfWork
   @Path("{id}")
-  public Response deletePeople(@PathParam("id") Long id) {
+  public Response deletePeople(@PathParam("id") Long id) throws NoContentException, NoContentExceptionMapper {
     boolean deleted = this.peopleService.delete(id);
     if (deleted) {
       return Response.ok().build();
-    } else {
-      return Response.status(Response.Status.NOT_FOUND)
-        .entity(new HttpResponse(
-          Response.Status.NOT_FOUND.getStatusCode(),
-          Response.Status.NOT_FOUND.getReasonPhrase(),
-          "Entity not found"
-        ))
-        .build();
     }
+    return null;
   }
 }

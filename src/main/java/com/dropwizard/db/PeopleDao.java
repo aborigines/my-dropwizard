@@ -21,8 +21,8 @@ public class PeopleDao extends AbstractDAO<People> {
     return persist(people);
   }
 
-  public void delete(People people) {
-    currentSession().delete(people);
+  public void delete(Long id) {
+    currentSession().delete(id);
   }
 
   @SuppressWarnings("unchecked")

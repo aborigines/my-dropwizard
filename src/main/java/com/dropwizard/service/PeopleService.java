@@ -40,7 +40,7 @@ public class PeopleService {
     Optional<People> findPeople =  Optional.ofNullable(this.peopleDao.findById(id))
       .orElseThrow(() -> new RuntimeException("some error message"));
     if (findPeople.isPresent()) {
-      this.peopleDao.delete(findPeople.get());
+      this.peopleDao.delete(findPeople.get().getId());
       return true;
     } else {
       return false;
