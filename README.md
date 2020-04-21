@@ -12,7 +12,9 @@ changelog
 
 TODO
 ---
-- Handle Unexpected case (500)
+- Handle Unexpected case (500)  
+- add json reponse when return HTTP 204 content not found
+- add Jbdi for extemly to custom sql (remcommend hibrenate for the basic sql)
 
 How to start the dropwizard application
 ---
