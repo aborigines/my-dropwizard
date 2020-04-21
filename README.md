@@ -15,6 +15,8 @@ TODO
 - Handle Unexpected case (500)  
 - add json reponse when return HTTP 204 content not found
 - add Jbdi for extemly to custom sql (remcommend hibrenate for the basic sql)
+- add cors
+- add swagger
 
 How to start the dropwizard application
 ---
